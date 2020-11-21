@@ -1,0 +1,18 @@
+what i"ve learned :
+
+=>to find a matched data with an input keyword, filter the the fetched(json()) data -->  
+                                                                                          let matches = states.filter(state=>{
+                                                                                          const regex = new RegExp(`${searchText}`,'gi');
+                                                                                          return state.name.match(regex) || state.abbr.match(regex);
+                                                                                          
+ =>To display the matches --> 
+           const html = matches.map(match=>
+           `
+           <div class="card card-body mb-1">
+           <h4>${match.name} (${match.abbr})<span class="text-primary">${match.capital}</span></h4>
+           </div>
+           <small>lat : ${match.lat} / long:${match.long}</small>
+           ` 
+        
+        );
+=> variable html is the array of html templates for the matched values --> DOMelement.innerHTML = html.join("");
